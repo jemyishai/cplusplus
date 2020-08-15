@@ -5,8 +5,8 @@ using namespace std;
 
 int main(){
 	
-	cout << "char ranges from " << CHAR_MIN;
-	cout << " up to " << CHAR_MAX;
+	cout << "char ranges from " << SCHAR_MIN;
+	cout << " up to " << SCHAR_MAX;
 	
 	cout << endl << endl;
 	
