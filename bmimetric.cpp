@@ -9,8 +9,6 @@ int main() {
   cout << "\nPlease enter height in meters:  ";
   cin>>height;
 
-
-    //(int)(var * 100 + .5)
   bmi = (int)((weight / (height*height))*100+.5);
   bmi = (float)bmi/100;
 
