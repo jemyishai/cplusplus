@@ -23,7 +23,7 @@ public:
     string output;
     string tempSeat;
     string isSoldTemp;
-    isSoldTemp = is_sold() ? "sold" : "available";
+    isSoldTemp = is_sold() ? "sold" : "available" ;
     output = Row + " " + Seat + " " + isSoldTemp;
     return output;
   };

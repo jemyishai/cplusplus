@@ -57,7 +57,6 @@ public:
     output = row + " " + seat + " " + isSoldTemp;
     return output;
   };
-
 };
 
 
