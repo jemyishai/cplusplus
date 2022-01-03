@@ -1,76 +1,57 @@
-#include <vector>
 #include <iostream>
-class BST
-{
-public:
+#include <vector>
+
+class BST {
+ public:
   int data;
   BST *left, *right;
-  BST()
-  {
+
+  BST() {
     left = nullptr;
+
     right = nullptr;
+
     data = 0;
   };
-  BST(int x)
-  {
+
+  BST(int x) {
     left = nullptr;
     right = nullptr;
     data = x;
   };
 
-  // void insert(int y)
-  // {
-  //   BST *newNode = new BST(y);
-  //   if (data < y)
-  //   {
-  //     //while right isn't nullptr
-  //     right = newNode;
-  //   }
-  //   else
-  //   {
-  //     //while left isn't nullptr
-  //     left = newNode;
-  //   };
-  // };
+  BST *insert(BST *root, int value) {
+    if (!root) {
+      return new BST(value);
+    };
+    if (value > root->data) {
+      root->right = insert(root->right, value);
+    } else {
+      root->left = insert(root->left, value);
+    };
+    return root;
+  }
 
-  void insert(int y)
-  {
+  void insert(int y) {
     BST *temp = this;
-    BST *prev = this;
-    BST *newNode = new BST(y);
-    while (temp != nullptr){
-      if(y < temp->data){
-        temp = temp->left;
-      } else{
-        temp = temp->right;
-      }
-      if (y< prev->data){
-        prev->left = newNode;
-      } else{
-        prev->right = newNode;
-      }
-    }
+    insert(temp, y);
   };
 
-void nth_node(BST* nodey, std::vector<int> &values)
-  {
+  void nth_node(BST *nodey, std::vector<int> &values) {
     if (nodey == nullptr) return;
 
-    nth_node( nodey->left, values);
+    nth_node(nodey->left, values);
     values.push_back(nodey->data);
-    nth_node( nodey->right, values);
+    nth_node(nodey->right, values);
   };
 
-int nth_node(int n){
-  std::vector<int> inOrder;
-  BST *root = this;
+  int nth_node(int n) {
+    std::vector<int> inOrder;
+    BST *root = this;
 
-  nth_node(root, inOrder);
+    nth_node(root, inOrder);
 
-  int output = inOrder[n+1];
-  // std::cout << output << std::endl;
-  return output;
-};
-
-
+    int output = inOrder[n - 1];
+    return output;
+  };
 };
